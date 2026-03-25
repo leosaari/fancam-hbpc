@@ -1,0 +1,17 @@
+{
+  "name": "fancam-hbpc",
+  "version": "1.0.0",
+  "description": "Fan-Cam interactive pour le HBPC - Handball Plan de Cuques",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "express": "^4.21.0",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.33.2",
+    "socket.io": "^4.7.4"
+  }
+}

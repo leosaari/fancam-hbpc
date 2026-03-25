@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HBPC Fan-Cam — Écran Géant</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body { cursor: none; overflow: hidden; }
+    body::after { display: none; }
+  </style>
+</head>
+<body>
+  <div class="display-container">
+    <!-- Watermark background -->
+    <div class="display-watermark">#HBPC &nbsp; FAN-CAM &nbsp; #HBPC &nbsp; FAN-CAM</div>
+
+    <!-- Header -->
+    <div class="display-header">
+      <div class="display-header-left">
+        <img src="/assets/logo-hbpc.png" alt="HBPC" class="display-logo"
+             onerror="this.outerHTML='<span style=\'font-size:1.5rem;font-weight:900;color:#FFD700;\'>HBPC</span>';">
+        <span class="display-title">Fan-Cam de la Mi-Temps</span>
+      </div>
+      <button class="display-mute-btn" id="mute-btn" title="Son on/off">🔊</button>
+    </div>
+
+    <!-- Waiting screen -->
+    <div class="display-waiting" id="waiting-screen">
+      <h2>🦁 Fan-Cam</h2>
+      <p>En attente de photos approuvées...</p>
+    </div>
+
+    <!-- Photo slides container -->
+    <div id="slides-container"></div>
+  </div>
+
+  <!-- Lion roar audio -->
+  <audio id="roar-audio" preload="auto">
+    <source src="data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABhgC7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAAAAYYoRwmHAAAAAAD/+1DEAAAGAAGn9AAAIi4mLP81kAAAANIAAAASEhISQkJCYmJignJycpKSkrKyssu7u7vb29v7+/v///8hISEhJCQkJiYmKCcnJykpKSsrKyy7u7u9vb2/v7+////yEhISEkJCQmJiYoJycnKSkpKysrLLu7u729vb+/v7////IQMBgYMDhAcIEBwsOFiQ8WLFy5g0aNHDx5AiRIkePIESRIkeQJEiRI8gAAAAA//tQxB4AAADSAAAAAAAAANIAAAAATEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVQ==" type="audio/mp3">
+  </audio>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/display.js"></script>
+</body>
+</html>

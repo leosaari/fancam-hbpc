@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HBPC Fan-Cam — Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="header">
+    <img src="/assets/logo-hbpc.png" alt="HBPC" class="header-logo"
+         onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='block';">
+    <div class="header-logo-fallback" id="logo-fallback" style="display:none;">HBPC</div>
+    <h1>Fan-Cam — Modération</h1>
+    <p class="subtitle">Panneau d'administration</p>
+  </header>
+
+  <div class="container container--wide">
+    <!-- STATS -->
+    <div class="admin-toolbar">
+      <div class="admin-stats">
+        <div class="admin-stat">
+          <div class="admin-stat-value" id="stat-total">0</div>
+          <div class="admin-stat-label">Total</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-value" id="stat-pending" style="color: var(--gold);">0</div>
+          <div class="admin-stat-label">En attente</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-value" id="stat-approved" style="color: var(--success);">0</div>
+          <div class="admin-stat-label">Approuvées</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-value" id="stat-rejected" style="color: var(--danger);">0</div>
+          <div class="admin-stat-label">Rejetées</div>
+        </div>
+      </div>
+      <a href="/display" target="_blank" class="btn btn--outline btn--small">📺 Ouvrir l'écran géant</a>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">Toutes</button>
+      <button class="filter-tab" data-filter="pending">En attente</button>
+      <button class="filter-tab" data-filter="approved">Approuvées</button>
+      <button class="filter-tab" data-filter="rejected">Rejetées</button>
+    </div>
+
+    <!-- PHOTO GRID -->
+    <div class="photo-grid" id="photo-grid"></div>
+
+    <p id="empty-state" style="text-align:center; color: var(--text-secondary); padding: 60px 0; display:none;">
+      Aucune photo pour le moment...
+    </p>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

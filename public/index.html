@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>HBPC Fan-Cam 🦁</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/logo-hbpc.png" type="image/png">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Fan-Cam HBPC — Handball Plan de Cuques. Prends-toi en photo et brille sur l'écran géant !">
+</head>
+<body class="fan-page">
+
+  <!-- Animated background particles -->
+  <div class="bg-particles" id="bg-particles"></div>
+
+  <!-- HEADER -->
+  <header class="fan-header">
+    <div class="fan-header-glow"></div>
+    <div class="fan-header-content">
+      <div class="fan-logo-wrapper">
+        <div class="fan-logo-ring"></div>
+        <img src="/assets/logo-hbpc.png" alt="HBPC" class="fan-logo">
+      </div>
+      <h1 class="fan-title">
+        <span class="fan-title-line1">Fan-Cam</span>
+        <span class="fan-title-line2">de la Mi-Temps</span>
+      </h1>
+      <p class="fan-subtitle">
+        <span>Scannez</span>
+        <span class="fan-subtitle-dot">&#9670;</span>
+        <span>Posez</span>
+        <span class="fan-subtitle-dot">&#9670;</span>
+        <span>Brillez</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="fan-main">
+
+    <!-- Photo counter -->
+    <div class="fan-counter" id="fan-counter">
+      <div class="fan-counter-flame">🔥</div>
+      <div class="fan-counter-text">
+        <span class="fan-counter-number" id="photo-count">0</span>
+        <span class="fan-counter-label">photos soumises</span>
+      </div>
+    </div>
+
+    <!-- FORM SECTION -->
+    <div id="form-section" class="fan-form-section">
+
+      <!-- Photo capture card -->
+      <div class="fan-card fan-card--capture">
+        <div class="fan-card-header">
+          <span class="fan-card-icon">📸</span>
+          <span class="fan-card-title">Ta photo</span>
+        </div>
+        <div class="fan-capture-area" id="capture-area">
+          <div class="fan-capture-placeholder" id="capture-placeholder">
+            <div class="fan-capture-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+            </div>
+            <p class="fan-capture-label">Appuie pour prendre ou choisir ta photo</p>
+          </div>
+          <img id="preview-img" class="fan-preview-img" style="display:none;" alt="Preview">
+          <button class="fan-capture-change" id="btn-change" style="display:none;">Changer</button>
+        </div>
+
+        <div class="fan-capture-actions">
+          <button class="fan-btn-capture" id="btn-camera" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+            Caméra
+          </button>
+          <button class="fan-btn-capture fan-btn-capture--secondary" id="btn-gallery" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            Galerie
+          </button>
+        </div>
+
+        <!-- Hidden inputs -->
+        <input type="file" id="input-camera" accept="image/*" capture="user" style="display:none;">
+        <input type="file" id="input-gallery" accept="image/*" style="display:none;">
+      </div>
+
+      <!-- Pseudo card -->
+      <div class="fan-card">
+        <div class="fan-card-header">
+          <span class="fan-card-icon">🦁</span>
+          <span class="fan-card-title">Ton blaze</span>
+          <span class="fan-card-optional">optionnel</span>
+        </div>
+        <div class="fan-input-wrapper">
+          <input type="text" id="pseudo-input" class="fan-input" placeholder="Ex: Léo, SuperFan13..."
+                 maxlength="20" autocomplete="off">
+          <span class="fan-input-counter"><span id="char-count">0</span>/20</span>
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button class="fan-submit" id="btn-submit" disabled>
+        <span class="fan-submit-text">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+          Envoyer ma photo
+        </span>
+        <span class="fan-submit-loading" style="display:none;">
+          <span class="fan-spinner"></span>
+          Envoi en cours...
+        </span>
+      </button>
+
+    </div>
+
+    <!-- SUCCESS SECTION -->
+    <div id="success-section" class="fan-success" style="display:none;">
+      <div class="fan-success-card">
+        <div class="fan-success-icon-wrapper">
+          <div class="fan-success-ring"></div>
+          <div class="fan-success-icon">🦁</div>
+        </div>
+        <h2 class="fan-success-title">C'est envoyé !</h2>
+        <p class="fan-success-text">Ta photo est en lice pour<br><strong>l'écran géant</strong> !</p>
+        <div class="fan-success-divider"></div>
+        <p class="fan-success-hint">Reste attentif à la mi-temps...<br>Tu pourrais apparaître en grand ! 🏟️</p>
+        <div class="fan-success-hashtag">#HBPC</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="fan-footer">
+    <span>HANDBALL PLAN DE CUQUES</span>
+    <span class="fan-footer-dot">•</span>
+    <span>PALAIS DES SPORTS</span>
+  </footer>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/fan.js"></script>
+</body>
+</html>
