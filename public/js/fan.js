@@ -21,6 +21,10 @@
   const successSection = document.getElementById('success-section');
   const photoCountEl = document.getElementById('photo-count');
 
+  const consentDiffusion = document.getElementById('consent-diffusion');
+  const consentUsage = document.getElementById('consent-usage');
+  const consentMajeur = document.getElementById('consent-majeur');
+
   let selectedFile = null;
 
   // ===== ANIMATED BACKGROUND PARTICLES =====
@@ -117,7 +121,7 @@
 
     selectedFile = file;
     displayPreview(file);
-    btnSubmit.disabled = false;
+    updateSubmitState();
   }
 
   function displayPreview(file) {
@@ -131,6 +135,16 @@
     };
     reader.readAsDataURL(file);
   }
+
+  // ===== CONSENT CHECKBOXES =====
+  function updateSubmitState() {
+    const allConsent = consentDiffusion.checked && consentUsage.checked && consentMajeur.checked;
+    btnSubmit.disabled = !selectedFile || !allConsent;
+  }
+
+  consentDiffusion.addEventListener('change', updateSubmitState);
+  consentUsage.addEventListener('change', updateSubmitState);
+  consentMajeur.addEventListener('change', updateSubmitState);
 
   // ===== COMPRESS IMAGE =====
   function compressImage(file) {

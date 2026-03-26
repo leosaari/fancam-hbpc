@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>HBPC Fan-Cam 🦁</title>
+  <title>HBPC Fan-Cam</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="icon" href="/assets/logo-hbpc.png" type="image/png">
   <meta name="theme-color" content="#0a0a0a">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="description" content="Fan-Cam HBPC — Handball Plan de Cuques. Prends-toi en photo et brille sur l'écran géant !">
+  <meta name="description" content="Fan-Cam HBPC — Handball Plan de Cuques. Participez et apparaissez sur l'ecran geant.">
 </head>
 <body class="fan-page">
 
@@ -43,7 +43,11 @@
 
     <!-- Photo counter -->
     <div class="fan-counter" id="fan-counter">
-      <div class="fan-counter-flame">🔥</div>
+      <div class="fan-counter-flame">
+        <svg viewBox="0 0 24 24" fill="#FFD700" width="22" height="22">
+          <path d="M12 23c-3.866 0-7-3.134-7-7 0-3.037 2.525-6.48 4.5-8.5.476-.487 1.312-.14 1.312.547 0 1.904 1.32 3.453 3.188 3.453.354 0 .688-.065 1-.175V7c0-.69.853-1.023 1.324-.517C18.462 8.86 19 12.07 19 16c0 3.866-3.134 7-7 7z"/>
+        </svg>
+      </div>
       <div class="fan-counter-text">
         <span class="fan-counter-number" id="photo-count">0</span>
         <span class="fan-counter-label">photos soumises</span>
@@ -56,7 +60,12 @@
       <!-- Photo capture card -->
       <div class="fan-card fan-card--capture">
         <div class="fan-card-header">
-          <span class="fan-card-icon">📸</span>
+          <span class="fan-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" width="20" height="20">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+          </span>
           <span class="fan-card-title">Ta photo</span>
         </div>
         <div class="fan-capture-area" id="capture-area">
@@ -79,7 +88,7 @@
               <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
               <circle cx="12" cy="13" r="4"/>
             </svg>
-            Caméra
+            Camera
           </button>
           <button class="fan-btn-capture fan-btn-capture--secondary" id="btn-gallery" type="button">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
@@ -99,15 +108,39 @@
       <!-- Pseudo card -->
       <div class="fan-card">
         <div class="fan-card-header">
-          <span class="fan-card-icon">🦁</span>
-          <span class="fan-card-title">Ton blaze</span>
+          <span class="fan-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" width="20" height="20">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </span>
+          <span class="fan-card-title">Ton pseudo</span>
           <span class="fan-card-optional">optionnel</span>
         </div>
         <div class="fan-input-wrapper">
-          <input type="text" id="pseudo-input" class="fan-input" placeholder="Ex: Léo, SuperFan13..."
+          <input type="text" id="pseudo-input" class="fan-input" placeholder="Ex: Leo, SuperFan13..."
                  maxlength="20" autocomplete="off">
           <span class="fan-input-counter"><span id="char-count">0</span>/20</span>
         </div>
+      </div>
+
+      <!-- Consent card -->
+      <div class="fan-card fan-card--consent">
+        <label class="fan-consent-item" for="consent-diffusion">
+          <input type="checkbox" id="consent-diffusion" class="fan-consent-checkbox">
+          <span class="fan-consent-checkmark"></span>
+          <span class="fan-consent-text">J'accepte que ma photo soit diffusee sur l'ecran geant du stade pendant la mi-temps.</span>
+        </label>
+        <label class="fan-consent-item" for="consent-usage">
+          <input type="checkbox" id="consent-usage" class="fan-consent-checkbox">
+          <span class="fan-consent-checkmark"></span>
+          <span class="fan-consent-text">J'accepte que ma photo puisse etre utilisee par le HBPC sur ses reseaux sociaux et supports de communication.</span>
+        </label>
+        <label class="fan-consent-item" for="consent-majeur">
+          <input type="checkbox" id="consent-majeur" class="fan-consent-checkbox">
+          <span class="fan-consent-checkmark"></span>
+          <span class="fan-consent-text">Je confirme etre majeur(e) ou avoir l'autorisation d'un representant legal.</span>
+        </label>
       </div>
 
       <!-- Submit button -->
@@ -132,12 +165,16 @@
       <div class="fan-success-card">
         <div class="fan-success-icon-wrapper">
           <div class="fan-success-ring"></div>
-          <div class="fan-success-icon">🦁</div>
+          <div class="fan-success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2.5" width="48" height="48">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
         </div>
-        <h2 class="fan-success-title">C'est envoyé !</h2>
-        <p class="fan-success-text">Ta photo est en lice pour<br><strong>l'écran géant</strong> !</p>
+        <h2 class="fan-success-title">C'est envoye !</h2>
+        <p class="fan-success-text">Ta photo est en lice pour<br><strong>l'ecran geant</strong> !</p>
         <div class="fan-success-divider"></div>
-        <p class="fan-success-hint">Reste attentif à la mi-temps...<br>Tu pourrais apparaître en grand ! 🏟️</p>
+        <p class="fan-success-hint">Reste attentif a la mi-temps...<br>Tu pourrais apparaitre en grand !</p>
         <div class="fan-success-hashtag">#HBPC</div>
       </div>
     </div>
@@ -147,7 +184,7 @@
   <!-- Footer -->
   <footer class="fan-footer">
     <span>HANDBALL PLAN DE CUQUES</span>
-    <span class="fan-footer-dot">•</span>
+    <span class="fan-footer-dot">&bull;</span>
     <span>PALAIS DES SPORTS</span>
   </footer>
 
