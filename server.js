@@ -158,6 +158,20 @@ app.delete('/api/photos/:id', adminAuth, (req, res) => {
   res.json({ success: true });
 });
 
+// ==================== HEALTH CHECK (keep alive on Render) ====================
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'alive', timestamp: Date.now() });
+});
+
+// Self-ping every 14 minutes to prevent Render free tier from sleeping
+if (process.env.RENDER_EXTERNAL_URL) {
+  setInterval(() => {
+    const url = `${process.env.RENDER_EXTERNAL_URL}/health`;
+    fetch(url).then(() => console.log('Keep-alive ping sent')).catch(() => {});
+  }, 14 * 60 * 1000); // 14 minutes
+}
+
 // ==================== PAGE ROUTES ====================
 
 app.get('/admin', (req, res) => {
